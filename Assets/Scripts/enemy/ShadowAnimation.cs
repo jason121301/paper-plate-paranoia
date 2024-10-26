@@ -5,20 +5,24 @@ using UnityEngine;
 public class ShadowAnimation : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float sizePerIncrease;
-    public float finalSize = 1f;
+    private float sizePerIncreaseX;
+    private float sizePerIncreaseY;
+    public float finalSizeX = 2f;
+    public float finalSizeY = 0.5f;
     public float spawningDuration = 3f;
-    private float currentSize = 0f;
+    private float currentSizeX = 0f;
+    private float currentSizeY = 0f;
     private SpriteRenderer renderer;
     private GameManager gameManager;
     public float lingeringDuration = 5f;
-    private bool isActive;
+    private bool isActive;  
 
     void Start()
     {
         renderer = gameObject.GetComponent<SpriteRenderer>();
 
-        sizePerIncrease = finalSize * 0.01f / spawningDuration;
+        sizePerIncreaseX = finalSizeX * 0.01f / spawningDuration;
+        sizePerIncreaseY = finalSizeY * 0.01f / spawningDuration;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
         GameObject manager = GameObject.Find("GameManager");
@@ -47,15 +51,17 @@ public class ShadowAnimation : MonoBehaviour
     private IEnumerator Generating()
     {
         WaitForSeconds wait = new WaitForSeconds(0.01f);
-        while (currentSize <= finalSize)
+        while (currentSizeX <= finalSizeX)
         {
             yield return wait;
-            currentSize += sizePerIncrease;
-            gameObject.transform.localScale = new Vector3(currentSize, currentSize, currentSize);
-            if (currentSize >= finalSize)
+            currentSizeX += sizePerIncreaseX;
+            currentSizeY += sizePerIncreaseY;
+            gameObject.transform.localScale = new Vector3(currentSizeX, currentSizeY, currentSizeX);
+            if (currentSizeX >= finalSizeX)
             {
 
-                renderer.color = Color.red;
+                //renderer.color = Color.red;
+                renderer.color = new Color(0f, 0f, 0f, 0f);
                 gameObject.GetComponent<BoxCollider2D>().enabled = true;
                 isActive = true;
             }

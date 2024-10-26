@@ -218,7 +218,7 @@ TextureImporter:
       name: coffee_spritesheet_5
       rect:
         serializedVersion: 2
-        x: 3600
+        x: 3596
         y: 346
         width: 600
         height: 330
@@ -344,7 +344,7 @@ TextureImporter:
       name: coffee_spritesheet_11
       rect:
         serializedVersion: 2
-        x: 3000
+        x: 2992
         y: 16
         width: 600
         height: 330
@@ -365,8 +365,8 @@ TextureImporter:
       name: coffee_spritesheet_12
       rect:
         serializedVersion: 2
-        x: 2993
-        y: 0
+        x: 2991
+        y: 12
         width: 600
         height: 330
       alignment: 0
