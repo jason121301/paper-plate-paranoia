@@ -29,7 +29,7 @@ public class ShadowAnimation : MonoBehaviour
         StartCoroutine(DestroySelf());
     }
 
-    private void OnTriggerEnter2D(Collider2D collission)
+    private void OnCollisionEnter2D(Collision2D collission)
     {
         if (collission.gameObject.name == "Player" && isActive)
         {

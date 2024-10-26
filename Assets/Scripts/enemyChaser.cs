@@ -12,6 +12,7 @@ public class enemyMovement : MonoBehaviour
     [SerializeField] float moveTime = 5.0f;
     private float timer = 0f;
     private bool isWaiting;
+    private GameManager gameManager;
 
     private Vector2 playerPos;
 
@@ -22,6 +23,8 @@ public class enemyMovement : MonoBehaviour
         isWaiting = true;
         player = GameObject.Find("Player");
         playerPos = player.transform.position;
+        GameObject manager = GameObject.Find("GameManager");
+        gameManager = manager.GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -48,15 +51,15 @@ public class enemyMovement : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, playerPos, speed * Time.deltaTime);
         }
     }
-    
 
-    private void OnTriggerEnter2D(Collider2D collider)
+
+    private void OnCollisionEnter2D(Collision2D collission)
     {
-        if (collider.gameObject.name == "Player")
+        if (collission.gameObject.name == "Player")
         {
-            Debug.Log("Game over");
+            gameManager.EndGame();
 
         }
     }
-
+        
 }
