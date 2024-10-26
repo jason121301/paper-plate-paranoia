@@ -16,9 +16,12 @@ public class enemyMovement : MonoBehaviour
 
     private Vector3 targetPos;
 
+    private int countDown;
+
     // Start is called before the first frame update
     void Start()
     {
+        countDown = 3;
         timer = waitingTime;
         isWaiting = true;
         player = GameObject.Find("Player");
@@ -29,6 +32,7 @@ public class enemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
@@ -39,12 +43,19 @@ public class enemyMovement : MonoBehaviour
             }
             else
             {
+                countDown--;
+                
                 timer = waitingTime;
                 isWaiting = true;
             }
         }
         if (isWaiting) 
         {
+            if (countDown == 0)
+            {
+                Debug.Log("destroy");
+                Destroy(gameObject);
+            }
             targetPos = player.transform.position;
             Vector2 direction = (transform.position - targetPos).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
