@@ -11,22 +11,29 @@ public class ShadowAnimation : MonoBehaviour
     private float currentSize = 0f;
     private SpriteRenderer renderer;
     private GameManager gameManager;
+    public float lingeringDuration = 5f;
+    private bool isActive;
 
     void Start()
     {
         renderer = gameObject.GetComponent<SpriteRenderer>();
 
         sizePerIncrease = finalSize * 0.01f / spawningDuration;
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
+        GameObject manager = GameObject.Find("GameManager");
+        gameManager = manager.GetComponent<GameManager>();
+        isActive = false;
 
         StartCoroutine(Generating());
+        StartCoroutine(DestroySelf());
     }
 
-    private void OnCollisionEnter2D(Collision2D collission)
+    private void OnTriggerEnter2D(Collider2D collission)
     {
-        if (collission.gameObject.name == "Player" && renderer.color == Color.red)
+        if (collission.gameObject.name == "Player" && isActive)
         {
-            //gameManager.EndGame();
+            gameManager.EndGame();
 
         }
     }
@@ -49,8 +56,17 @@ public class ShadowAnimation : MonoBehaviour
             {
 
                 renderer.color = Color.red;
+                gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                isActive = true;
             }
         }
 
+    }
+
+    private IEnumerator DestroySelf()
+    {
+        WaitForSeconds wait = new WaitForSeconds(lingeringDuration);
+        yield return wait;
+        Destroy(gameObject);
     }
 }
