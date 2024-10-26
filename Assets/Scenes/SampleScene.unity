@@ -536,8 +536,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 92393858027469545, guid: 100366f41af828f4f8d2c3ec80d427b8, type: 3}
   m_PrefabInstance: {fileID: 2942981779688271236}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &976529741
-BoxCollider2D:
+--- !u!58 &976529746
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -579,8 +579,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.5
 --- !u!1 &1759945578 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3951827236719201459, guid: 88599da1888c4e44db5edd98b5b54b30, type: 3}
@@ -618,6 +617,7 @@ MonoBehaviour:
   enemyToSpawn: {fileID: 1650367375907746806, guid: b34a3bce29c7cea498c188c07cf1173d, type: 3}
   initialRate: 0.5
   rateIncrease: 1.1
+
   rangeX: 5
   rangeY: 5
 --- !u!4 &2016889266
@@ -701,7 +701,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 92393858027469545, guid: 100366f41af828f4f8d2c3ec80d427b8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 976529741}
+      addedObject: {fileID: 976529746}
   m_SourcePrefab: {fileID: 100100000, guid: 100366f41af828f4f8d2c3ec80d427b8, type: 3}
 --- !u!1001 &3763333006491457732
 PrefabInstance:
