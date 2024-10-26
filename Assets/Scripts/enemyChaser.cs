@@ -14,7 +14,7 @@ public class enemyMovement : MonoBehaviour
     private bool isWaiting;
     private GameManager gameManager;
 
-    private Vector2 playerPos;
+    private Vector3 targetPos;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,6 @@ public class enemyMovement : MonoBehaviour
         timer = waitingTime;
         isWaiting = true;
         player = GameObject.Find("Player");
-        playerPos = player.transform.position;
         GameObject manager = GameObject.Find("GameManager");
         gameManager = manager.GetComponent<GameManager>();
     }
@@ -35,10 +34,8 @@ public class enemyMovement : MonoBehaviour
         {
             if (isWaiting)
             {
-                // reached waiting time
-                timer = moveTime;   // reset
-                playerPos = player.transform.position; // new direction to go
-                isWaiting = false;  // can move
+                timer = moveTime;
+                isWaiting = false;
             }
             else
             {
@@ -46,16 +43,22 @@ public class enemyMovement : MonoBehaviour
                 isWaiting = true;
             }
         }
-        if (!isWaiting)
+        if (isWaiting) 
         {
-            transform.position = Vector2.MoveTowards(transform.position, playerPos, speed * Time.deltaTime);
+            targetPos = player.transform.position;
+            Vector2 direction = (transform.position - targetPos).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+        }
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
         }
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collission)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collission.gameObject.name == "Player")
+        if (collision.gameObject.name == "Player")
         {
             gameManager.EndGame();
 
