@@ -538,7 +538,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dfa2be24d8afcb498eaf19cdf96163c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   enemyToSpawn: {fileID: 1650367375907746806, guid: b34a3bce29c7cea498c188c07cf1173d, type: 3}
+=======
+  enemyToSpawn: {fileID: 173758546341999447, guid: dc9e2ee9c9890714fbad1da080715cea, type: 3}
+>>>>>>> a7bf3a017ddcdfd0e30d2542d8de8944f97564e8
   initialRate: 3
   rateIncrease: 1
   rangeX: 5
