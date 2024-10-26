@@ -459,8 +459,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 92393858027469545, guid: 100366f41af828f4f8d2c3ec80d427b8, type: 3}
   m_PrefabInstance: {fileID: 2942981779688271236}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &976529741
-BoxCollider2D:
+--- !u!58 &976529746
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -492,18 +492,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.5
 --- !u!1 &1759945578 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3951827236719201459, guid: 88599da1888c4e44db5edd98b5b54b30, type: 3}
@@ -538,7 +528,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dfa2be24d8afcb498eaf19cdf96163c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 1650367375907746806, guid: b34a3bce29c7cea498c188c07cf1173d, type: 3}
   enemyToSpawn: {fileID: 173758546341999447, guid: dc9e2ee9c9890714fbad1da080715cea, type: 3}
   initialRate: 3
   rateIncrease: 1
@@ -621,7 +610,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 92393858027469545, guid: 100366f41af828f4f8d2c3ec80d427b8, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 976529741}
+      addedObject: {fileID: 976529746}
   m_SourcePrefab: {fileID: 100100000, guid: 100366f41af828f4f8d2c3ec80d427b8, type: 3}
 --- !u!1001 &3763333006491457732
 PrefabInstance:
