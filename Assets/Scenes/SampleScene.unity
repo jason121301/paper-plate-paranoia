@@ -674,7 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dfa2be24d8afcb498eaf19cdf96163c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyToSpawn: {fileID: 2575683347411262688, guid: fa050e1403bea6b41b29d08182f7efb8, type: 3}
+  enemyToSpawn: {fileID: 173758546341999447, guid: dc9e2ee9c9890714fbad1da080715cea, type: 3}
   initialRate: 3
   rateIncrease: 1
   rangeX: 5
