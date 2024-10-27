@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.FilePathAttribute;
 
 public class KetchupEnemy : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class KetchupEnemy : MonoBehaviour
 
     private Animator anim;
     private bool flash;
+    public GameObject laser;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +56,7 @@ public class KetchupEnemy : MonoBehaviour
 
     public void OnAnimationFlash()
     {
+        //Instantiate(laser, transform.position, Quaternion.identity);
         flash = true;
     }
 
