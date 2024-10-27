@@ -39,7 +39,7 @@ public class enemyMovement : MonoBehaviour
         animator.SetInteger("countDown", countDown);
         timer -= Time.deltaTime;
         if (timer <= 0)
-        {
+        {   
             if (isWaiting)
             {
                 timer = moveTime;
@@ -103,7 +103,9 @@ public class enemyMovement : MonoBehaviour
         if (collision.gameObject.name.Contains("Fork"))
         {
             isMoving = false;
-            gameObject.transform.parent = collision.transform;
+            Vector3 originalScale = gameObject.transform.localScale;
+            gameObject.transform.SetParent(collision.transform);
+            gameObject.transform.localScale = originalScale;
         }
     }
 

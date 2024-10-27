@@ -86,8 +86,10 @@ public class RatEnemy : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().sprite = ratDead;
         }
         else if (collission.gameObject.name.Contains("Fork")){
-            isMoving = false;
-            gameObject.transform.parent = collission.transform;
+                isMoving = false;
+                Vector3 originalScale = gameObject.transform.localScale;
+                gameObject.transform.parent = collission.transform;
+                gameObject.transform.localScale = new Vector3(0.25f, 0.5f, 0);
         }
     }
 }
