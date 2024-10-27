@@ -71,7 +71,10 @@ public class playerMovement : MonoBehaviour
     {
         if (collision.gameObject.name.Contains("Enemy") && collisionStatus == CollisionStatus.Vulnerable)
         {
-            gameManager.EndGame();
+            if (collision.otherCollider.gameObject == this.gameObject)
+            {
+                gameManager.EndGame();
+            }
 
         }
         else if (collision.gameObject.name.Contains("Enemy") && collisionStatus == CollisionStatus.Kill)

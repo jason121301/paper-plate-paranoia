@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class abilityManager : MonoBehaviour
 {
     // attached to player
-    public int numSkills = 5;
+    private int numFork = 1;
+    private int numUncontrollable = 1;
+    private int numSpoon = 1;
+    public Sprite surprisedFace;
     public GameObject fork;
+    public GameObject spoon;
     //public GameObject cup;
-    private Skill[] skills;
-    private int current;
     private GameObject playerObject;
     private playerMovement playerMovement;
     // Start is called before the first frame update
@@ -23,52 +27,53 @@ public class abilityManager : MonoBehaviour
         Fork = 4,
         Uncontrollable = 5
     }
+
+    private void Awake()
+    {
+        playerObject = GameObject.Find("Player");
+        playerMovement = playerObject.GetComponent<playerMovement>();
+    }
     void Start()
     {
         // initialize all skills
-        skills = new Skill[numSkills];
-        addSkill(SkillType.None);
-        addSkill(SkillType.Flash);
-        addSkill(SkillType.Wipe);
-        addSkill(SkillType.Cup);
-        addSkill(SkillType.Fork);
 
-        playerObject = GameObject.Find("Player");
-        playerMovement = playerObject.GetComponent<playerMovement>();
 
         // game starts, have no ability
-        current = 0;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            StartCoroutine(moveUncontrollable());
-            Debug.Log("Should move uncontrollably");
+            if (numUncontrollable >= 1)
+            {
+                GameObject.Find("UncontrollableAbilityCircle").GetComponent<Image>().color = Color.red;
+                StartCoroutine(MoveUncontrollable());
+                Debug.Log("Should move uncontrollably");
+                numUncontrollable--;
+                
+            }
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            summonFork();
-            Debug.Log("Should summon Fork");
+            if (numFork >= 1)
+            {
+                summonFork();
+                Debug.Log("Should summon Fork");
+                numFork--;
+                GameObject.Find("ForkAbilityCircle").GetComponent<Image>().color = Color.red;
+            }
         }
-    }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (numSpoon >= 1)
+            {
 
-    void addSkill(SkillType t)
-    {
-        skills[(int)t] = new Skill((int)t);
-    }
-    public void acquireSkill(SkillType t)
-    {
-        skills[(int)t].Active = true;
-    }
-
-    void activateSkill(SkillType t)
-    {
-        // call the function related to that skill
-
-        // turn off the skill   
-        skills[(int)t].Active = false;
+                summonSpoon();
+                numSpoon--;
+                GameObject.Find("SpoonAbilityCircle").GetComponent<Image>().color = Color.red;
+            }
+        }
     }
 
     // script for fork
@@ -96,6 +101,13 @@ public class abilityManager : MonoBehaviour
 
     }
 
+    void summonSpoon()
+    {
+        GameObject newSpoon = Instantiate(spoon, new Vector3(transform.position.x + 2f, transform.position.y, 0), Quaternion.identity);
+        newSpoon.transform.parent = gameObject.transform;
+        StartCoroutine(DestroyAfterDelay(newSpoon, 5f));
+    }
+
     // script for flash
     void flash()
     {
@@ -117,9 +129,11 @@ public class abilityManager : MonoBehaviour
 
     }
 
-    private IEnumerator moveUncontrollable() 
+    private IEnumerator MoveUncontrollable() 
     {
         playerMovement.collisionStatus = CollisionStatus.Kill;
+        Sprite originalSprite = playerObject.GetComponent<SpriteRenderer>().sprite;
+        playerObject.GetComponent<SpriteRenderer>().sprite = surprisedFace;
         float total_time = 2f;
         float current_time = 0f;
         while (total_time > current_time)
@@ -137,5 +151,15 @@ public class abilityManager : MonoBehaviour
 
         }
         playerMovement.collisionStatus = CollisionStatus.Vulnerable;
+        playerObject.GetComponent<SpriteRenderer>().sprite = originalSprite;
+
+
+    }
+
+    private IEnumerator DestroyAfterDelay(GameObject item, float seconds)
+    {
+        WaitForSeconds wait = new WaitForSeconds(seconds);
+        yield return wait;
+        Destroy(item);
     }
 }

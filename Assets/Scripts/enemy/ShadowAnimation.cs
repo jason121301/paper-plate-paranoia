@@ -15,7 +15,6 @@ public class ShadowAnimation : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private GameManager gameManager;
     public float lingeringDuration = 5f;
-    private bool isActive;
 
     void Start()
     {
@@ -27,7 +26,6 @@ public class ShadowAnimation : MonoBehaviour
 
         GameObject manager = GameObject.Find("GameManager");
         gameManager = manager.GetComponent<GameManager>();
-        isActive = false;
 
         StartCoroutine(Generating());
         StartCoroutine(DestroySelf());
@@ -55,7 +53,6 @@ public class ShadowAnimation : MonoBehaviour
                 //renderer.color = Color.red;
                 spriteRenderer.color = new Color(0f, 0f, 0f, 0f);
                 gameObject.GetComponent<BoxCollider2D>().enabled = true;
-                isActive = true;
             }
         }
 
@@ -73,6 +70,15 @@ public class ShadowAnimation : MonoBehaviour
         if (collision.gameObject.name.Contains("Wall"))
         {
             gameObject.transform.parent = collision.transform;
+        }
+
+        else if (collision.gameObject.name.Contains("Fork") || collision.gameObject.name.Contains("Spoon"))
+        {
+            Debug.Log("I have hit " + collision.gameObject.name);
+            Vector3 originalScale = gameObject.transform.localScale;
+            gameObject.transform.SetParent(collision.transform);
+            gameObject.transform.localScale = originalScale;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 }

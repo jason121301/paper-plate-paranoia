@@ -85,11 +85,13 @@ public class RatEnemy : MonoBehaviour
             triggerSpin = true;
             gameObject.GetComponent<SpriteRenderer>().sprite = ratDead;
         }
-        else if (collission.gameObject.name.Contains("Fork")){
+        else if (collission.gameObject.name.Contains("Fork") || collission.gameObject.name.Contains("Spoon"))
+        {
                 isMoving = false;
                 Vector3 originalScale = gameObject.transform.localScale;
                 gameObject.transform.parent = collission.transform;
                 gameObject.transform.localScale = new Vector3(0.25f, 0.5f, 0);
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 }

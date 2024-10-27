@@ -100,12 +100,13 @@ public class enemyMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name.Contains("Fork"))
+        if (collision.gameObject.name.Contains("Fork") || collision.gameObject.name.Contains("Spoon"))
+
         {
+            Debug.Log("I have hit " + collision.gameObject.name);
             isMoving = false;
-            Vector3 originalScale = gameObject.transform.localScale;
             gameObject.transform.SetParent(collision.transform);
-            gameObject.transform.localScale = originalScale;
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
         }
     }
 
