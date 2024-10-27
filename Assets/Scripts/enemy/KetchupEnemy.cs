@@ -10,7 +10,7 @@ public class KetchupEnemy : MonoBehaviour
     private Camera camera;
     //private GameObject player;
     private float elapsedTime;
-    [SerializeField] float waitTime;
+    private float waitTime;
 
     private float rand_x;
     private float rand_y;
