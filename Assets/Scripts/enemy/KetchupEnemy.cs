@@ -19,6 +19,7 @@ public class KetchupEnemy : MonoBehaviour
     private bool flash;
     public GameObject laser;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,8 +57,12 @@ public class KetchupEnemy : MonoBehaviour
 
     public void OnAnimationFlash()
     {
-        //Instantiate(laser, transform.position, Quaternion.identity);
         flash = true;
+    }
+
+    public void OnAnimationSqueeze()
+    {
+        Instantiate(laser, transform.position, transform.rotation, transform);
     }
 
 }
