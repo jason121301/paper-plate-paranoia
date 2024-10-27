@@ -11,6 +11,8 @@ public class playerMovement : MonoBehaviour
     private float rotz;
     public float rotationSpeed;
     public bool rotationClock;
+    private GameManager gameManager;
+    public CollisionStatus collisionStatus = CollisionStatus.Vulnerable;
 
     [System.NonSerialized] public float moveX;
     [System.NonSerialized] public float moveY;
@@ -18,6 +20,7 @@ public class playerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -64,6 +67,18 @@ public class playerMovement : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, rotz);
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Contains("Enemy") && collisionStatus == CollisionStatus.Vulnerable)
+        {
+            gameManager.EndGame();
+
+        }
+        else if (collision.gameObject.name.Contains("Enemy") && collisionStatus == CollisionStatus.Kill)
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 
 
     void move()
@@ -73,4 +88,10 @@ public class playerMovement : MonoBehaviour
 
 
     
+}
+
+public enum CollisionStatus{
+    Kill,
+    Vulnerable,
+    Invincible
 }

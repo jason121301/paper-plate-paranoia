@@ -16,6 +16,7 @@ public class enemySpawner : MonoBehaviour
     [SerializeField] EnemyType enemy;
     private GameObject cameraObject;
     private Camera mainCamera;
+    private int amount_miss = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +52,8 @@ public class enemySpawner : MonoBehaviour
             while (Mathf.Abs(location.x) > 25 || Mathf.Abs(location.y) > 25)
             {
                 location = getLocation();
+                amount_miss += 1;
+                Debug.Log(amount_miss + " total items have been spawned outside the wall");
                 yield return null;
             }       
             GameObject newEnemy = Instantiate(enemyToSpawn, location, Quaternion.identity);
