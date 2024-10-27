@@ -50,15 +50,15 @@ public class playerMovement : MonoBehaviour
     {
         if (moveX > 0)
         {
-            rotz += -Time.deltaTime * rotationSpeed;
+            rotz += -Time.unscaledDeltaTime * rotationSpeed;
         }
         else if(moveX < 0)
         {
-            rotz += Time.deltaTime * rotationSpeed;
+            rotz += Time.unscaledDeltaTime * rotationSpeed;
         }
         else if(moveY != 0)
         {
-            rotz += -Time.deltaTime * rotationSpeed;
+            rotz += -Time.unscaledDeltaTime * rotationSpeed;
 
         }
 

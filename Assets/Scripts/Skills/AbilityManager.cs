@@ -216,7 +216,7 @@ public class abilityManager : MonoBehaviour
         playerMovement.collisionStatus = CollisionStatus.Kill;
         Sprite originalSprite = playerObject.GetComponent<SpriteRenderer>().sprite;
         playerObject.GetComponent<SpriteRenderer>().sprite = surprisedFace;
-        float total_time = 2f;
+        float total_time = 3f;
         float current_time = 0f;
         while (total_time > current_time)
         {
