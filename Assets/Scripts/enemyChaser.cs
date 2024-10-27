@@ -8,6 +8,7 @@ public class enemyMovement : MonoBehaviour
     private GameManager gameManager;
     public Animator animator;
     private GameObject player;
+    private CircleCollider2D collider;
 
     [SerializeField] float speed = 5.0f;
 
@@ -17,7 +18,7 @@ public class enemyMovement : MonoBehaviour
     private float timer = 0f;
     private bool isWaiting;
 
-    private int countDown;
+    public int countDown;
 
     // Start is called before the first frame update
     void Start()
@@ -28,12 +29,13 @@ public class enemyMovement : MonoBehaviour
         player = GameObject.Find("Player");
         GameObject manager = GameObject.Find("GameManager");
         gameManager = manager.GetComponent<GameManager>();
+        collider = gameObject.GetComponent<CircleCollider2D>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        animator.SetInteger("countDown", countDown);
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
@@ -44,20 +46,16 @@ public class enemyMovement : MonoBehaviour
             }
             else
             {
-                countDown--;
                 startShake(0.5f);
+                collider.radius += 0.05f;
+                countDown--;
+                Debug.Log(collider.radius);
                 //timer = waitingTime;
                 isWaiting = true;
             }
         }
         if (isWaiting) 
         {
-            if (countDown == 0)
-            {
-                startShake(0.5f);
-                Debug.Log("destroy");
-                Destroy(gameObject);
-            }
             targetPos = player.transform.position;
             Vector2 direction = (transform.position - targetPos).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -67,6 +65,7 @@ public class enemyMovement : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
         }
+
     }
 
     public void startShake(float duration)
@@ -86,6 +85,16 @@ public class enemyMovement : MonoBehaviour
         }
         transform.position = originalPos;
 
+        if (countDown == 0)
+        {
+            collider.radius = 3.0f;
+            if ((player.transform.position - transform.position).sqrMagnitude < collider.radius * collider.radius)
+            {
+                gameManager.EndGame();
+            }
+            Debug.Log("destroy");
+            Destroy(gameObject);
+        }
     }
 
 
@@ -94,7 +103,6 @@ public class enemyMovement : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             gameManager.EndGame();
-
         }
     }
         
