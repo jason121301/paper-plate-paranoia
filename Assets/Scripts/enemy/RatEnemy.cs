@@ -61,6 +61,10 @@ public class RatEnemy : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, new Vector2(finalPosition.x, finalPosition.y), speed * Time.deltaTime);
         }
+        else
+        {
+            DestroySelf();
+        }
         if ((transform.position.x == finalPosition.x && transform.position.y == finalPosition.y) || triggerSpin)
         {
             animator.enabled = false;
@@ -84,14 +88,16 @@ public class RatEnemy : MonoBehaviour
             animator.enabled = false;
             triggerSpin = true;
             gameObject.GetComponent<SpriteRenderer>().sprite = ratDead;
+            transform.SetParent(null, true);
         }
         else if (collission.gameObject.name.Contains("Fork") || collission.gameObject.name.Contains("Spoon"))
         {
                 isMoving = false;
-                Vector3 originalScale = gameObject.transform.localScale;
+            if (collission.gameObject.name.Contains("Spoon"))
+            {
                 gameObject.transform.parent = collission.transform;
-                gameObject.transform.localScale = new Vector3(0.25f, 0.5f, 0);
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
     }
 }
