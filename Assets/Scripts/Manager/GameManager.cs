@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject losePanel;
+    public GameObject winPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,12 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         losePanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void WinGame()
+    {
+        winPanel.SetActive(true);
         Time.timeScale = 0;
     }
 }
