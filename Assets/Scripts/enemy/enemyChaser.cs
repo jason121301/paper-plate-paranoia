@@ -17,7 +17,7 @@ public class enemyMovement : MonoBehaviour
     private Vector3 targetPos;
     private float timer = 0f;
     private bool isWaiting;
-
+    public bool isMoving = true;
     public int countDown;
 
     // Start is called before the first frame update
@@ -26,6 +26,7 @@ public class enemyMovement : MonoBehaviour
         countDown = 3;
         timer = waitingTime;
         isWaiting = true;
+        isMoving = true;
         player = GameObject.Find("Player");
         GameObject manager = GameObject.Find("GameManager");
         gameManager = manager.GetComponent<GameManager>();
@@ -61,7 +62,10 @@ public class enemyMovement : MonoBehaviour
         }
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+            if (isMoving)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+            }
         }
 
     }
@@ -93,5 +97,14 @@ public class enemyMovement : MonoBehaviour
             Destroy(gameObject);
         }
     }
-        
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Contains("Fork"))
+        {
+            isMoving = false;
+            gameObject.transform.parent = collision.transform;
+        }
+    }
+
 }

@@ -67,4 +67,12 @@ public class ShadowAnimation : MonoBehaviour
         yield return wait;
         Destroy(gameObject);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name.Contains("Wall"))
+        {
+            gameObject.transform.parent = collision.transform;
+        }
+    }
 }

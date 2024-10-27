@@ -74,8 +74,20 @@ public class abilityManager : MonoBehaviour
     // script for fork
     void summonFork()
     {
-        GameObject newFork = Instantiate(fork, transform.position, Quaternion.identity);
-        
+        if (playerMovement.moveX != 0 || playerMovement.moveY != 0)
+        {
+            float angle = Mathf.Atan2(playerMovement.moveY, playerMovement.moveX) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.Euler(0, 0, angle);
+
+
+            GameObject newFork = Instantiate(fork, transform.position, rotation);
+        }
+        else
+        {
+            // Instantiate fork with a default rotation if no input is detected
+            GameObject newFork = Instantiate(fork, transform.position, Quaternion.identity);
+        }
+
     }
 
     // script for cup
@@ -110,8 +122,6 @@ public class abilityManager : MonoBehaviour
         playerMovement.collisionStatus = CollisionStatus.Kill;
         float total_time = 2f;
         float current_time = 0f;
-        bool x_direction = true;
-        bool y_direction = true;
         while (total_time > current_time)
         {
             current_time += 0.3f;

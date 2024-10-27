@@ -17,6 +17,7 @@ public class RatEnemy : MonoBehaviour
     public Sprite ratDead;
     private Animator animator;
     private bool triggerSpin =false;
+    [System.NonSerialized] public bool isMoving = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +57,10 @@ public class RatEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, new Vector2(finalPosition.x, finalPosition.y), speed * Time.deltaTime);
+        if (isMoving)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(finalPosition.x, finalPosition.y), speed * Time.deltaTime);
+        }
         if ((transform.position.x == finalPosition.x && transform.position.y == finalPosition.y) || triggerSpin)
         {
             animator.enabled = false;
@@ -80,6 +84,10 @@ public class RatEnemy : MonoBehaviour
             animator.enabled = false;
             triggerSpin = true;
             gameObject.GetComponent<SpriteRenderer>().sprite = ratDead;
+        }
+        else if (collission.gameObject.name.Contains("Fork")){
+            isMoving = false;
+            gameObject.transform.parent = collission.transform;
         }
     }
 }
