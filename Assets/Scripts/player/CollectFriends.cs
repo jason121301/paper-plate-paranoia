@@ -85,12 +85,12 @@ public class CollectFriends : MonoBehaviour
         Vector2 location = new Vector2(0,0);
         while (Vector2.Distance(gameObject.transform.position, location) < 20f)
         {
-            int rand_x = Random.Range(-2f, 3f);
+            float rand_x = Random.Range(-2f, 3f);
             Debug.Log(rand_x + " is rand_x");
-            int rand_y = Random.Range(-2f, 3f);
+            float rand_y = Random.Range(-2f, 3f);
             Debug.Log(rand_y + " is rand_y");
             location = new Vector2(rand_x, rand_y) * 60f;
-            location = new Vector2(Mathf.Clamp(location.x, -23, 23), Mathf.Clamp(location.y, -23, 23));
+            location = new Vector2(Mathf.Clamp(location.x, -23f, 23f), Mathf.Clamp(location.y, -23f, 23f));
         }
         Instantiate(friends[friendInt], location, Quaternion.Euler(Vector3.forward));
         friendLocation = location;
