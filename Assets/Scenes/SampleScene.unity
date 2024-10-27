@@ -798,7 +798,6 @@ GameObject:
   m_Component:
   - component: {fileID: 613272390}
   - component: {fileID: 613272392}
-  - component: {fileID: 613272391}
   - component: {fileID: 613272393}
   - component: {fileID: 519420033}
   m_Layer: 5
@@ -827,18 +826,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 5}
   m_SizeDelta: {x: 1000, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &613272391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 613272389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &613272392
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1062,6 +1049,57 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 693746806}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &707580072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 707580074}
+  - component: {fileID: 707580073}
+  m_Layer: 0
+  m_Name: Spawner Rat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &707580073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707580072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dfa2be24d8afcb498eaf19cdf96163c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyToSpawn: {fileID: 1118925180955489419, guid: 6ace6e4352fa95841bc31ccfe88f0e5a, type: 3}
+  initialRate: 1
+  rateIncrease: 1.2
+  rangeX: 1
+  rangeY: 1
+  timeBeforeSpawn: 10
+  enemy: 2
+--- !u!4 &707580074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707580072}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -1598,6 +1636,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092962637}
   m_CullTransparentMesh: 1
+--- !u!1 &1180608326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1180608328}
+  - component: {fileID: 1180608327}
+  m_Layer: 0
+  m_Name: Spawner Shadow (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1180608327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180608326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dfa2be24d8afcb498eaf19cdf96163c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyToSpawn: {fileID: 1650367375907746806, guid: b34a3bce29c7cea498c188c07cf1173d, type: 3}
+  initialRate: 0.5
+  rateIncrease: 1.5
+  rangeX: 10
+  rangeY: 10
+  timeBeforeSpawn: 0
+  enemy: 1
+--- !u!4 &1180608328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180608326}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1739087372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1761,6 +1850,57 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3951827236719201459, guid: 88599da1888c4e44db5edd98b5b54b30, type: 3}
   m_PrefabInstance: {fileID: 3763333006491457732}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1800979644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1800979646}
+  - component: {fileID: 1800979645}
+  m_Layer: 0
+  m_Name: Spawner Shadow (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1800979645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800979644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dfa2be24d8afcb498eaf19cdf96163c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyToSpawn: {fileID: 1650367375907746806, guid: b34a3bce29c7cea498c188c07cf1173d, type: 3}
+  initialRate: 0.5
+  rateIncrease: 1.5
+  rangeX: 10
+  rangeY: 10
+  timeBeforeSpawn: 0
+  enemy: 1
+--- !u!4 &1800979646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800979644}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2016889264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1795,6 +1935,7 @@ MonoBehaviour:
   rateIncrease: 1.1
   rangeX: 2
   rangeY: 2
+  timeBeforeSpawn: 0
   enemy: 0
 --- !u!4 &2016889266
 Transform:
@@ -1843,8 +1984,9 @@ MonoBehaviour:
   enemyToSpawn: {fileID: 1650367375907746806, guid: b34a3bce29c7cea498c188c07cf1173d, type: 3}
   initialRate: 0.5
   rateIncrease: 1.5
-  rangeX: 5
-  rangeY: 5
+  rangeX: 10
+  rangeY: 10
+  timeBeforeSpawn: 0
   enemy: 1
 --- !u!4 &2120511669
 Transform:
@@ -2200,6 +2342,9 @@ SceneRoots:
   - {fileID: 2942981779688271236}
   - {fileID: 2016889266}
   - {fileID: 2120511669}
+  - {fileID: 1800979646}
+  - {fileID: 1180608328}
+  - {fileID: 707580074}
   - {fileID: 3763333006491457732}
   - {fileID: 331626931}
   - {fileID: 7635703779051987148}

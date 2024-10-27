@@ -12,6 +12,9 @@ public class playerMovement : MonoBehaviour
     public float rotationSpeed;
     public bool rotationClock;
 
+    [System.NonSerialized] public float moveX;
+    [System.NonSerialized] public float moveY;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,8 +22,8 @@ public class playerMovement : MonoBehaviour
 
     void Update()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        moveX = Input.GetAxisRaw("Horizontal");
+        moveY = Input.GetAxisRaw("Vertical");
 
         processInputs(moveX,moveY);
         rotation(moveX, moveY);
