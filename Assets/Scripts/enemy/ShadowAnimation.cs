@@ -12,14 +12,14 @@ public class ShadowAnimation : MonoBehaviour
     public float spawningDuration = 3f;
     private float currentSizeX = 0f;
     private float currentSizeY = 0f;
-    private SpriteRenderer renderer;
+    private SpriteRenderer spriteRenderer;
     private GameManager gameManager;
     public float lingeringDuration = 5f;
-    private bool isActive;  
+    private bool isActive;
 
     void Start()
     {
-        renderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         sizePerIncreaseX = finalSizeX * 0.01f / spawningDuration;
         sizePerIncreaseY = finalSizeY * 0.01f / spawningDuration;
@@ -61,7 +61,7 @@ public class ShadowAnimation : MonoBehaviour
             {
 
                 //renderer.color = Color.red;
-                renderer.color = new Color(0f, 0f, 0f, 0f);
+                spriteRenderer.color = new Color(0f, 0f, 0f, 0f);
                 gameObject.GetComponent<BoxCollider2D>().enabled = true;
                 isActive = true;
             }
