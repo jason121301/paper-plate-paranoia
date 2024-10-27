@@ -6,7 +6,7 @@ public class abilityManager : MonoBehaviour
 {
     // attached to player
     public int numSkills = 5;
-    //public GameObject fork;
+    public GameObject fork;
     //public GameObject cup;
     private Skill[] skills;
     private int current;
@@ -47,6 +47,11 @@ public class abilityManager : MonoBehaviour
             StartCoroutine(moveUncontrollable());
             Debug.Log("Should move uncontrollably");
         }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            summonFork();
+            Debug.Log("Should summon Fork");
+        }
     }
 
     void addSkill(SkillType t)
@@ -62,14 +67,15 @@ public class abilityManager : MonoBehaviour
     {
         // call the function related to that skill
 
-        // turn off the skill
+        // turn off the skill   
         skills[(int)t].Active = false;
     }
 
     // script for fork
     void summonFork()
     {
-        // make the fork appear
+        GameObject newFork = Instantiate(fork, transform.position, Quaternion.identity);
+        
     }
 
     // script for cup
@@ -106,35 +112,9 @@ public class abilityManager : MonoBehaviour
         float current_time = 0f;
         bool x_direction = true;
         bool y_direction = true;
-        int i = 0;
-        float new_x = 0;
-        float new_y = 0;
         while (total_time > current_time)
         {
             current_time += 0.3f;
-            i++;
-            //if (x_direction == true)
-            //{
-            //    new_x = transform.position.x + Random.Range(5f, 7f);
-            //    x_direction = false;
-            //}
-            //else
-            //{
-            //    new_x = transform.position.x - Random.Range(5f, 7f);
-            //    x_direction = true;
-            //}
-            //if (y_direction == true)
-            //{
-            //    new_y = transform.position.y + Random.Range(5f, 7f);
-            //    y_direction = false;
-            //}
-            //else
-            //{
-            //    new_y = transform.position.y - Random.Range(5f, 7f);
-            //    y_direction = true;
-            //}
-
-            //Vector3 finalDestination = new Vector3(new_x, new_y, 0);
 
             Vector2 shakePos = Random.insideUnitCircle * 20f;
             Vector3 finalDestination = new Vector3(shakePos.x, shakePos.y, 0);

@@ -31,19 +31,19 @@ public class RatEnemy : MonoBehaviour
         float diff_y = gameObject.transform.position.y - player.transform.position.y;
         if (diff_x > 0)
         {
-            final_x = gameObject.transform.position.x - diff_x * 2 + (playerMovement.moveX * playerMovement.moveSpeed);
+            final_x = (gameObject.transform.position.x - diff_x * 2 + (playerMovement.moveX * playerMovement.moveSpeed)) * 10;
         }
         else
         {
-            final_x = gameObject.transform.position.x + diff_x * 2 + playerMovement.moveX * playerMovement.moveSpeed;
+            final_x = (gameObject.transform.position.x +  diff_y * 2 + playerMovement.moveX * playerMovement.moveSpeed) * 10;
         }
         if (diff_y > 0)
         {
-            final_y = gameObject.transform.position.y - diff_y * 2  + playerMovement.moveY * playerMovement.moveSpeed;
+            final_y = (gameObject.transform.position.y - diff_y * 2  + playerMovement.moveY * playerMovement.moveSpeed) * 10;
         }
         else
         {
-            final_y = gameObject.transform.position.y + diff_y * 2 + playerMovement.moveY * playerMovement.moveSpeed;
+            final_y = (gameObject.transform.position.y + diff_y * 2 + playerMovement.moveY * playerMovement.moveSpeed) * 10;
         }
 
         transform.LookAt(new Vector2(final_x, final_y));
@@ -64,7 +64,7 @@ public class RatEnemy : MonoBehaviour
             currentRotation += Time.deltaTime * rotationSpeed;
             transform.rotation = Quaternion.Euler(0, 0, currentRotation);
             StartCoroutine(DestroySelf());
-        }
+        } 
     }
 
     private IEnumerator DestroySelf()
