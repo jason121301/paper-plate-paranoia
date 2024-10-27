@@ -83,9 +83,28 @@ public class abilityManager : MonoBehaviour
         {
             float angle = Mathf.Atan2(playerMovement.moveY, playerMovement.moveX) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.Euler(0, 0, angle);
+            Vector3 offset = rotation * Vector3.left * 20f;
+            Vector3 spawnPosition = transform.position + offset;
+
+            if (spawnPosition.x < -25)
+            {
+                spawnPosition.x -= (spawnPosition.x + 25) * 2;
+            }
+            else if (spawnPosition.x > 25)
+            {
+                spawnPosition.x -= (spawnPosition.x - 25) * 2;
+            }
+            if (spawnPosition.y < -25)
+            {
+                spawnPosition.y -= (spawnPosition.y + 25) * 2;
+            }
+            else if (spawnPosition.y > 25)
+            {
+                spawnPosition.y -= (spawnPosition.y - 25) * 2;
+            }
 
 
-            GameObject newFork = Instantiate(fork, transform.position, rotation);
+                GameObject newFork = Instantiate(fork, spawnPosition, rotation);
         }
         else
         {
