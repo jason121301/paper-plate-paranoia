@@ -1233,11 +1233,8 @@ GameObject:
   m_Component:
   - component: {fileID: 693746808}
   - component: {fileID: 693746807}
-<<<<<<< HEAD
-=======
   - component: {fileID: 693746811}
   - component: {fileID: 693746810}
->>>>>>> 6b77d78a613a6269a90f333fe64ebce4ccd71024
   - component: {fileID: 693746809}
   m_Layer: 0
   m_Name: GameManager
