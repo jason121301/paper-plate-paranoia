@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5818478066258366375}
   - component: {fileID: 7123243244841387861}
   m_Layer: 0
-  m_Name: Shadow
+  m_Name: CoffeeEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

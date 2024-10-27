@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1112308923380281923}
   - component: {fileID: 6464515625908798627}
   m_Layer: 0
-  m_Name: EnemyChaser
+  m_Name: PopcornEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

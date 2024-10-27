@@ -33,14 +33,6 @@ public class ShadowAnimation : MonoBehaviour
         StartCoroutine(DestroySelf());
     }
 
-    private void OnCollisionEnter2D(Collision2D collission)
-    {
-        if (collission.gameObject.name == "Player" && isActive)
-        {
-            gameManager.EndGame();
-
-        }
-    }
 
     // Update is called once per frame
     void Update()
