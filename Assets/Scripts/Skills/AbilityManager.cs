@@ -3,29 +3,32 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class abilityManager : MonoBehaviour
 {
     // attached to player
-    private int numFork = 1;
-    private int numUncontrollable = 1;
-    private int numSpoon = 1;
+    private int numF = 1;
+    private int numQ = 1;
+    private int numE = 1;
     public Sprite surprisedFace;
     public GameObject fork;
     public GameObject spoon;
-    //public GameObject cup;
+    public GameObject clone;
+    public List<SkillType> skillsToSprite;
+    public List<Sprite> sprite;
     private GameObject playerObject;
     private playerMovement playerMovement;
+    private List<SkillType> currentSkills = new List<SkillType>();
+    
     // Start is called before the first frame update
 
     public enum SkillType
     {
-        None = 0,
-        Flash = 1,
-        Wipe = 2,
-        Cup = 3,
-        Fork = 4,
-        Uncontrollable = 5
+        Clone,
+        Spoon,
+        Fork,
+        Uncontrollable
     }
 
     private void Awake()
@@ -35,43 +38,88 @@ public class abilityManager : MonoBehaviour
     }
     void Start()
     {
-        // initialize all skills
+        // initialize random skills
+        List<SkillType> skillsList = new List<SkillType>();
+        foreach (SkillType skill in Enum.GetValues(typeof(SkillType)))
+        {
+            skillsList.Add(skill);
+        }
+        while (currentSkills.Count < 3)
+        {
+            int i = UnityEngine.Random.Range(0, skillsList.Count);
+            currentSkills.Add(skillsList[i]);
+            skillsList.RemoveAt(i);
+        }
+        bool qDone = false;
+        bool eDone = false;
+        foreach (SkillType item in currentSkills)
+        {
+            int index = skillsToSprite.FindIndex(skill => skill == item);
+            if (!qDone)
+            {
+                GameObject.Find("QImage").GetComponent<Image>().sprite = sprite[index];
+                qDone = true;
+            }
+            else if (!eDone)
+            {
+                GameObject.Find("EImage").GetComponent<Image>().sprite = sprite[index];
+                eDone = true;
+            }
+            else
+            {
+                GameObject.Find("FImage").GetComponent<Image>().sprite = sprite[index];
+            }
+        }
+    }
 
-
-        // game starts, have no ability
+    void ActivateSkill(SkillType skill)
+    {
+        if (skill == SkillType.Clone)
+        {
+            summonClone();
+        }
+        else if (skill == SkillType.Spoon)
+        {
+            summonSpoon();
+        }
+        else if (skill == SkillType.Fork)
+        {
+            summonFork();
+        }
+        else if (skill == SkillType.Uncontrollable) 
+        {
+            StartCoroutine(MoveUncontrollable());
+        }
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (numUncontrollable >= 1)
+            if (numQ >= 1)
             {
-                GameObject.Find("UncontrollableAbilityCircle").GetComponent<Image>().color = Color.red;
-                StartCoroutine(MoveUncontrollable());
-                Debug.Log("Should move uncontrollably");
-                numUncontrollable--;
+                GameObject.Find("QAbility").GetComponent<Image>().color = Color.red;
+                ActivateSkill(currentSkills[0]);
+                numQ--;
                 
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (numFork >= 1)
-            {
-                summonFork();
-                Debug.Log("Should summon Fork");
-                numFork--;
-                GameObject.Find("ForkAbilityCircle").GetComponent<Image>().color = Color.red;
             }
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (numSpoon >= 1)
+            if (numF >= 1)
             {
-
-                summonSpoon();
-                numSpoon--;
-                GameObject.Find("SpoonAbilityCircle").GetComponent<Image>().color = Color.red;
+                ActivateSkill(currentSkills[1]);
+                numF--;
+                GameObject.Find("EAbility").GetComponent<Image>().color = Color.red;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (numE >= 1)
+            {
+                ActivateSkill(currentSkills[2]);
+                numE--;
+                GameObject.Find("FAbility").GetComponent<Image>().color = Color.red;
             }
         }
     }
@@ -84,7 +132,7 @@ public class abilityManager : MonoBehaviour
             float angle = Mathf.Atan2(playerMovement.moveY, playerMovement.moveX) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.Euler(0, 0, angle);
             Vector3 offset = rotation * Vector3.left * 20f;
-            Vector3 spawnPosition = transform.position + offset;
+            Vector3 spawnPosition = playerObject.transform.position + offset;
 
             if (spawnPosition.x < -25)
             {
@@ -114,6 +162,21 @@ public class abilityManager : MonoBehaviour
 
     }
 
+    void summonClone()
+    {
+        for (int x = -4; x <= 4; x = x + 4)
+        {
+            for (int y = -4; y <= 4; y = y + 4)
+            {
+                if (!(y == 0 && x == 0)) { 
+                GameObject newClone = Instantiate(clone, new Vector3(playerObject.transform.position.x + x, playerObject.transform.position.y + y, 0), Quaternion.identity);
+
+                //newClone.transform.SetParent(gameObject.transform);
+            }
+            }
+        }
+    }
+
     // script for cup
     void summonCup()
     {
@@ -122,9 +185,9 @@ public class abilityManager : MonoBehaviour
 
     void summonSpoon()
     {
-        GameObject newSpoon = Instantiate(spoon, new Vector3(transform.position.x + 2f, transform.position.y, 0), Quaternion.identity);
+        GameObject newSpoon = Instantiate(spoon, new Vector3(playerObject.transform.position.x + 2f, playerObject.transform.position.y, 0), Quaternion.identity);
         newSpoon.transform.parent = gameObject.transform;
-        StartCoroutine(DestroyAfterDelay(newSpoon, 5f));
+        StartCoroutine(DestroyAfterDelay(newSpoon, 10f));
     }
 
     // script for flash
@@ -159,12 +222,12 @@ public class abilityManager : MonoBehaviour
         {
             current_time += 0.3f;
 
-            Vector2 shakePos = Random.insideUnitCircle * 20f;
+            Vector2 shakePos = UnityEngine.Random.insideUnitCircle * 20f;
             Vector3 finalDestination = new Vector3(shakePos.x, shakePos.y, 0);
             float time = Vector3.Distance(playerObject.transform.position, finalDestination) / (0.2f) * Time.deltaTime;
-            while (transform.position.x != finalDestination.x)
+            while (playerObject.transform.position.x != finalDestination.x)
             {
-                transform.position = Vector3.MoveTowards(playerObject.transform.position, finalDestination, time);
+                playerObject.transform.position = Vector3.MoveTowards(playerObject.transform.position, finalDestination, time);
                 yield return null;
             }
 

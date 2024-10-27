@@ -52,6 +52,7 @@ public class RatEnemy : MonoBehaviour
         var dir = new Vector3(finalPosition.x, finalPosition.y, 0f) - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        StartCoroutine(DestroySelf(20f));
     }
 
     // Update is called once per frame
@@ -63,7 +64,7 @@ public class RatEnemy : MonoBehaviour
         }
         else
         {
-            DestroySelf();
+            DestroySelf(3f);
         }
         if ((transform.position.x == finalPosition.x && transform.position.y == finalPosition.y) || triggerSpin)
         {
@@ -71,13 +72,13 @@ public class RatEnemy : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().sprite = ratDead;
             currentRotation += Time.deltaTime * rotationSpeed;
             transform.rotation = Quaternion.Euler(0, 0, currentRotation);
-            StartCoroutine(DestroySelf());
+            StartCoroutine(DestroySelf(3f));
         } 
     }
 
-    private IEnumerator DestroySelf()
+    private IEnumerator DestroySelf(float seconds)
     {
-        WaitForSeconds wait = new WaitForSeconds(2f);
+        WaitForSeconds wait = new WaitForSeconds(seconds);
         yield return wait;
         Destroy(gameObject);
     }
