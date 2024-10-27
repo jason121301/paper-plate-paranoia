@@ -5,16 +5,17 @@ using UnityEngine.UIElements;
 
 public class enemyMovement : MonoBehaviour
 {
+    private GameManager gameManager;
+    public Animator animator;
     private GameObject player;
+
     [SerializeField] float speed = 5.0f;
 
-    [SerializeField] float waitingTime = 1.0f;
-    [SerializeField] float moveTime = 5.0f;
+    [SerializeField] float waitingTime = 0.5f;
+    [SerializeField] float moveTime = 2.0f;
+    private Vector3 targetPos;
     private float timer = 0f;
     private bool isWaiting;
-    private GameManager gameManager;
-
-    private Vector3 targetPos;
 
     private int countDown;
 
@@ -44,8 +45,8 @@ public class enemyMovement : MonoBehaviour
             else
             {
                 countDown--;
-                
-                timer = waitingTime;
+                startShake(0.5f);
+                //timer = waitingTime;
                 isWaiting = true;
             }
         }
@@ -53,6 +54,7 @@ public class enemyMovement : MonoBehaviour
         {
             if (countDown == 0)
             {
+                startShake(0.5f);
                 Debug.Log("destroy");
                 Destroy(gameObject);
             }
@@ -66,6 +68,26 @@ public class enemyMovement : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
         }
     }
+
+    public void startShake(float duration)
+    {
+        StartCoroutine(shake(duration));
+    }
+    public IEnumerator shake(float duration)
+    {
+        Vector2 originalPos = transform.position;
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            Vector2 shakePos = Random.insideUnitCircle * 0.1f;
+            transform.position = originalPos + shakePos;
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = originalPos;
+
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

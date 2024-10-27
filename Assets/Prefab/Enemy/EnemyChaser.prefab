@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2680600583514126485}
   - component: {fileID: 4762741375961226970}
   - component: {fileID: -1112308923380281923}
+  - component: {fileID: 6464515625908798627}
   m_Layer: 0
   m_Name: EnemyChaser
   m_TagString: Untagged
@@ -76,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 160c8ec71de26b94db80301aab70760f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -161,6 +162,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d375764fbdcf9740bb4eba59a0f9dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  waitingTime: 1
+  speed: 18
+  waitingTime: 0.5
   moveTime: 2
+--- !u!95 &6464515625908798627
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173758546341999447}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
