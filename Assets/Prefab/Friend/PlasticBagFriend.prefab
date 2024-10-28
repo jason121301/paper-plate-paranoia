@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8566426733385127178}
   - component: {fileID: -3235889285584429876}
   - component: {fileID: -2117985210920522836}
+  - component: {fileID: -378947479088452305}
   m_Layer: 0
   m_Name: PlasticBagFriend
   m_TagString: Untagged
@@ -159,6 +160,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.63, y: 2.82}
   m_EdgeRadius: 0
+--- !u!114 &-378947479088452305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3042205388505942285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1198336b6143a95459f059f5937d7a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFollow: 0
+  order: 0
+  rotationSpeed: 500
 --- !u!1001 &2419426934547773635
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8646392832793793814}
   - component: {fileID: -1775807985913396137}
   - component: {fileID: 5713742580832709389}
+  - component: {fileID: 5183324599995260797}
   m_Layer: 0
   m_Name: StrawsFriend
   m_TagString: Untagged
@@ -159,6 +160,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.42, y: 2.12}
   m_EdgeRadius: 0
+--- !u!114 &5183324599995260797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6708581844513987016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1198336b6143a95459f059f5937d7a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFollow: 0
+  order: 0
+  rotationSpeed: 500
 --- !u!1001 &3916951995220594070
 PrefabInstance:
   m_ObjectHideFlags: 0

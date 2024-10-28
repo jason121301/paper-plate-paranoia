@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6290357383599211881}
   - component: {fileID: -4613235228184109668}
   - component: {fileID: 5081561257479841983}
+  - component: {fileID: 2050753054294405732}
   m_Layer: 0
   m_Name: PaperCupFriend
   m_TagString: Untagged
@@ -159,6 +160,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.82, y: 1.98}
   m_EdgeRadius: 0
+--- !u!114 &2050753054294405732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7623056905890909539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1198336b6143a95459f059f5937d7a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFollow: 0
+  order: 0
+  rotationSpeed: 500
 --- !u!1001 &7265571170522815910
 PrefabInstance:
   m_ObjectHideFlags: 0

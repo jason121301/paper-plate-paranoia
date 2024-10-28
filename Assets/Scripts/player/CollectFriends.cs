@@ -65,7 +65,7 @@ public class CollectFriends : MonoBehaviour
                 {
                     spawnFriend(collected);
                 }
-                Destroy(collision.gameObject);
+                collision.gameObject.GetComponent<FriendScript>().StartFollow(collected);
             }
             
 
