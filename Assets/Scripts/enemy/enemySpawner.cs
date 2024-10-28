@@ -128,5 +128,6 @@ public enum EnemyType
 {
     Chaser,
     Shadow,
-    Rat
+    Rat,
+    Ketchup
 }

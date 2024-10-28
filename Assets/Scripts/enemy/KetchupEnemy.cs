@@ -5,29 +5,28 @@ using static UnityEditor.FilePathAttribute;
 
 public class KetchupEnemy : MonoBehaviour
 {
-    // get camera
-    // position follow camera position until idk how many seconds
-    private Camera camera;
-    //private GameObject player;
+    [SerializeField] Collider2D collider;
+
     private float elapsedTime;
     private float waitTime;
 
+    private Camera camera;
     private float rand_x;
     private float rand_y;
 
     private Animator anim;
     private bool flash;
-    public GameObject laser;
-
 
     // Start is called before the first frame update
     void Start()
     {
+        collider = GetComponent<Collider2D>(); ;
+        collider.enabled = false;
+
         anim = GetComponent<Animator>();
         camera = Camera.main;
         rand_x = Random.Range(0, 2);
         rand_y = Random.Range(0, 2);
-        //player = GameObject.Find("Player");
 
         waitTime = anim.runtimeAnimatorController.animationClips[0].length;
         flash = false;
@@ -40,12 +39,13 @@ public class KetchupEnemy : MonoBehaviour
 
         if (!flash)
         {
-            Vector2 location = camera.ViewportToWorldPoint(new Vector3(rand_x, rand_y, camera.nearClipPlane));
-            transform.position = location + new Vector2(-location.x, -location.y) * 0.15f;
-
-            Vector2 direction = (transform.position - camera.transform.position).normalized;
+            Vector2 location = 0.85f * camera.ViewportToWorldPoint(new Vector3(rand_x, rand_y, camera.nearClipPlane));
+            Vector2 cameraPos = new Vector2(camera.transform.position.x, camera.transform.position.y);
+            Vector2 direction = (location - cameraPos).normalized;
             float angle = Mathf.Atan2(direction.x, -direction.y) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+
+            transform.position = location - 13.7f * direction;
         }
 
 
@@ -62,7 +62,8 @@ public class KetchupEnemy : MonoBehaviour
 
     public void OnAnimationSqueeze()
     {
-        Instantiate(laser, transform.position, transform.rotation, transform);
+        collider.enabled = true;
+        Debug.Log(collider.enabled);
     }
 
 }

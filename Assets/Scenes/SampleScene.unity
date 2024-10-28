@@ -1258,8 +1258,14 @@ MonoBehaviour:
   losePanel: {fileID: 1759945578}
   winPanel: {fileID: 1359817581}
   backgroundMusic: {fileID: 693746809}
+<<<<<<< HEAD
   winMusic: {fileID: 693746810}
   loseMusic: {fileID: 693746809}
+=======
+  winMusic: {fileID: 693746811}
+  loseMuisc: {fileID: 693746810}
+  UI: {fileID: 758006607}
+>>>>>>> 1f64b05fb6a2667203b6b841418df9bc7f681feb
 --- !u!4 &693746808
 Transform:
   m_ObjectHideFlags: 0
@@ -1614,6 +1620,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &758006607 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6940200929915536012, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
+  m_PrefabInstance: {fileID: 7635703779051987148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &838165953
 GameObject:
   m_ObjectHideFlags: 0
@@ -2889,6 +2900,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789732383}
   m_CullTransparentMesh: 1
+--- !u!1 &1885772454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1885772456}
+  - component: {fileID: 1885772455}
+  m_Layer: 0
+  m_Name: Spawner Ketchup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1885772455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885772454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dfa2be24d8afcb498eaf19cdf96163c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyToSpawn: {fileID: 2575683347411262688, guid: f3b0f8403d65e70428263696569566af, type: 3}
+  initialRate: 5
+  rateIncrease: 1
+  rangeX: 1
+  rangeY: 1
+  timeBeforeSpawn: 0
+  enemy: 3
+--- !u!4 &1885772456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885772454}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1891647110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3642,6 +3704,18 @@ PrefabInstance:
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 4712727826309057033, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
+      propertyPath: m_margin.x
+      value: -53.904144
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712727826309057033, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
+      propertyPath: m_margin.z
+      value: -88.34265
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712727826309057033, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: aa3ad08b6d451424db61df54eab8f649, type: 2}
+    - target: {fileID: 4712727826309057033, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
       propertyPath: m_fontColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -3658,8 +3732,16 @@ PrefabInstance:
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 4712727826309057033, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7484671204859834193, guid: aa3ad08b6d451424db61df54eab8f649, type: 2}
+    - target: {fileID: 4712727826309057033, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712727826309057033, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5411030917734090845, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
       propertyPath: m_Pivot.x
@@ -3763,12 +3845,13 @@ SceneRoots:
   - {fileID: 2016889266}
   - {fileID: 2120511669}
   - {fileID: 707580074}
+  - {fileID: 1885772456}
   - {fileID: 3763333006491457732}
   - {fileID: 331626931}
+  - {fileID: 142437722}
   - {fileID: 7635703779051987148}
   - {fileID: 693746808}
   - {fileID: 838165957}
-  - {fileID: 142437722}
   - {fileID: 294683900}
   - {fileID: 184375435}
   - {fileID: 918379012}
