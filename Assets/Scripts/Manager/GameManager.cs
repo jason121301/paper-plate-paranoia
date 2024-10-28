@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public AudioSource backgroundMusic;
     public AudioSource winMusic;
     public AudioSource loseMuisc;
+    public GameObject UI;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     public void WinGame()
     {
         winPanel.SetActive(true);
+        UI.SetActive(false);
         winMusic.Play();
         Time.timeScale = 0;
     }

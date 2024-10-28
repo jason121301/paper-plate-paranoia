@@ -1260,6 +1260,7 @@ MonoBehaviour:
   backgroundMusic: {fileID: 693746809}
   winMusic: {fileID: 693746811}
   loseMuisc: {fileID: 693746810}
+  UI: {fileID: 758006607}
 --- !u!4 &693746808
 Transform:
   m_ObjectHideFlags: 0
@@ -1614,6 +1615,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &758006607 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6940200929915536012, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
+  m_PrefabInstance: {fileID: 7635703779051987148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &838165953
 GameObject:
   m_ObjectHideFlags: 0
@@ -3649,6 +3655,18 @@ PrefabInstance:
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 4712727826309057033, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
+      propertyPath: m_margin.x
+      value: -53.904144
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712727826309057033, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
+      propertyPath: m_margin.z
+      value: -88.34265
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712727826309057033, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: aa3ad08b6d451424db61df54eab8f649, type: 2}
+    - target: {fileID: 4712727826309057033, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
       propertyPath: m_fontColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -3665,8 +3683,16 @@ PrefabInstance:
       value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 4712727826309057033, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7484671204859834193, guid: aa3ad08b6d451424db61df54eab8f649, type: 2}
+    - target: {fileID: 4712727826309057033, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712727826309057033, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5411030917734090845, guid: aa137c82e7c2f194780f561c77d1c607, type: 3}
       propertyPath: m_Pivot.x
@@ -3772,10 +3798,10 @@ SceneRoots:
   - {fileID: 707580074}
   - {fileID: 3763333006491457732}
   - {fileID: 331626931}
+  - {fileID: 142437722}
   - {fileID: 7635703779051987148}
   - {fileID: 693746808}
   - {fileID: 838165957}
-  - {fileID: 142437722}
   - {fileID: 294683900}
   - {fileID: 184375435}
   - {fileID: 918379012}
