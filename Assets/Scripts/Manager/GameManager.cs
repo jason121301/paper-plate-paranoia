@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
+        backgroundMusic.Stop();
         winPanel.SetActive(true);
         UI.SetActive(false);
         winMusic.Play();

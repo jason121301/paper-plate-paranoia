@@ -1259,7 +1259,7 @@ MonoBehaviour:
   winPanel: {fileID: 1359817581}
   backgroundMusic: {fileID: 693746809}
   winMusic: {fileID: 693746811}
-  loseMuisc: {fileID: 693746810}
+  loseMusic: {fileID: 693746810}
   UI: {fileID: 758006607}
 --- !u!4 &693746808
 Transform:
