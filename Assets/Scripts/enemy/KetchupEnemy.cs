@@ -11,7 +11,7 @@ public class KetchupEnemy : MonoBehaviour
     private float elapsedTime;
     private float waitTime;
 
-    private Camera camera;
+    private new Camera camera;
     private float rand_x;
     private float rand_y;
 
@@ -65,7 +65,6 @@ public class KetchupEnemy : MonoBehaviour
     public void OnAnimationSqueeze()
     {
         collider.enabled = true;
-        Debug.Log(collider.enabled);
     }
 
 }
