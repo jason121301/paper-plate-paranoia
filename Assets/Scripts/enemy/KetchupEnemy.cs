@@ -5,7 +5,8 @@ using static UnityEditor.FilePathAttribute;
 
 public class KetchupEnemy : MonoBehaviour
 {
-    [SerializeField] Collider2D collider;
+    private Collider2D collider;
+    private Rigidbody2D rb;
 
     private float elapsedTime;
     private float waitTime;
@@ -20,7 +21,8 @@ public class KetchupEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        collider = GetComponent<Collider2D>(); ;
+        rb = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
         collider.enabled = false;
 
         anim = GetComponent<Animator>();
@@ -44,7 +46,6 @@ public class KetchupEnemy : MonoBehaviour
             Vector2 direction = (location - cameraPos).normalized;
             float angle = Mathf.Atan2(direction.x, -direction.y) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-
             transform.position = location - 13.7f * direction;
         }
 
@@ -58,6 +59,7 @@ public class KetchupEnemy : MonoBehaviour
     public void OnAnimationFlash()
     {
         flash = true;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 
     public void OnAnimationSqueeze()
