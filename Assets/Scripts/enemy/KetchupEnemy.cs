@@ -5,7 +5,7 @@ using static UnityEditor.FilePathAttribute;
 
 public class KetchupEnemy : MonoBehaviour
 {
-    private Collider2D collider;
+    private new Collider2D collider;
     private Rigidbody2D rb;
 
     private float elapsedTime;
