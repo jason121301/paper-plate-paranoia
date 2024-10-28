@@ -87,9 +87,7 @@ public class CollectFriends : MonoBehaviour
         while (Vector2.Distance(gameObject.transform.position, location) < 20f)
         {
             float rand_x = Random.Range(-2f, 3f);
-            Debug.Log(rand_x + " is rand_x");
             float rand_y = Random.Range(-2f, 3f);
-            Debug.Log(rand_y + " is rand_y");
             location = new Vector2(rand_x, rand_y) * 60f;
             location = new Vector2(Mathf.Clamp(location.x, -23f, 23f), Mathf.Clamp(location.y, -23f, 23f));
         }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class KetchupEnemy : MonoBehaviour
 {
-    private Collider2D collider;
+    private new Collider2D collider;
     private Rigidbody2D rb;
 
     private float elapsedTime;
     private float waitTime;
 
-    private Camera camera;
+    private new Camera camera;
     private float rand_x;
     private float rand_y;
 
@@ -64,7 +64,6 @@ public class KetchupEnemy : MonoBehaviour
     public void OnAnimationSqueeze()
     {
         collider.enabled = true;
-        Debug.Log(collider.enabled);
     }
 
 }
