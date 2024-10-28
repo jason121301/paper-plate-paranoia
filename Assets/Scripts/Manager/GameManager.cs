@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject winPanel;
     public AudioSource backgroundMusic;
     public AudioSource winMusic;
-    public AudioSource loseMuisc;
+    public AudioSource loseMusic;
     public GameObject UI;
     // Start is called before the first frame update
     void Start()

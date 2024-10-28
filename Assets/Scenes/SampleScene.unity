@@ -1258,14 +1258,9 @@ MonoBehaviour:
   losePanel: {fileID: 1759945578}
   winPanel: {fileID: 1359817581}
   backgroundMusic: {fileID: 693746809}
-<<<<<<< HEAD
-  winMusic: {fileID: 693746810}
-  loseMusic: {fileID: 693746809}
-=======
   winMusic: {fileID: 693746811}
   loseMuisc: {fileID: 693746810}
   UI: {fileID: 758006607}
->>>>>>> 1f64b05fb6a2667203b6b841418df9bc7f681feb
 --- !u!4 &693746808
 Transform:
   m_ObjectHideFlags: 0
