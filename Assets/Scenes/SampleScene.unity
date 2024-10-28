@@ -1258,8 +1258,8 @@ MonoBehaviour:
   losePanel: {fileID: 1759945578}
   winPanel: {fileID: 1359817581}
   backgroundMusic: {fileID: 693746809}
-  winMusic: {fileID: 693746811}
-  loseMuisc: {fileID: 693746810}
+  winMusic: {fileID: 693746810}
+  loseMusic: {fileID: 693746809}
 --- !u!4 &693746808
 Transform:
   m_ObjectHideFlags: 0
@@ -2177,11 +2177,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 08d4404e59369a2448805d032461885f, type: 3}
   - {fileID: 21300000, guid: 59b9fc3d2c4aea64788eecef7758dfe9, type: 3}
   - {fileID: 21300000, guid: f9836563cec23a2478e2d78d0b672bd0, type: 3}
---- !u!4 &976529764 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8896527333586467486, guid: 100366f41af828f4f8d2c3ec80d427b8, type: 3}
-  m_PrefabInstance: {fileID: 2942981779688271236}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &976529765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2199,6 +2194,7 @@ MonoBehaviour:
   friend3: {fileID: 3042205388505942285, guid: e19551efc04c1094b99678ed32fe97e2, type: 3}
   friend4: {fileID: 6708581844513987016, guid: 7e6aab88083ca9648b1ed55c5ba952fe, type: 3}
   friendPointer: {fileID: 1891647111}
+  happySprite: {fileID: 21300000, guid: b89a66e59f1233840af477e5b69c88b0, type: 3}
 --- !u!1 &1118903708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2899,7 +2895,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 976529764}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2612185042305841288, guid: d98cba355fa23aa489032be6d10af45a, type: 3}
       propertyPath: m_Sprite
@@ -2907,11 +2903,11 @@ PrefabInstance:
       objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
     - target: {fileID: 8679635990016892460, guid: d98cba355fa23aa489032be6d10af45a, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 8679635990016892460, guid: d98cba355fa23aa489032be6d10af45a, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8679635990016892460, guid: d98cba355fa23aa489032be6d10af45a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2919,7 +2915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8679635990016892460, guid: d98cba355fa23aa489032be6d10af45a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 8679635990016892460, guid: d98cba355fa23aa489032be6d10af45a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3500,10 +3496,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7597270861656378564, guid: 100366f41af828f4f8d2c3ec80d427b8, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8896527333586467486, guid: 100366f41af828f4f8d2c3ec80d427b8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1891647112}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 92393858027469545, guid: 100366f41af828f4f8d2c3ec80d427b8, type: 3}
       insertIndex: -1
@@ -3780,3 +3773,4 @@ SceneRoots:
   - {fileID: 184375435}
   - {fileID: 918379012}
   - {fileID: 1739087374}
+  - {fileID: 1891647110}

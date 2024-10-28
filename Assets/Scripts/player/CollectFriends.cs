@@ -14,6 +14,7 @@ public class CollectFriends : MonoBehaviour
     private bool canCollect = true;
     private Vector2 friendLocation;
     public GameObject friendPointer;
+    public Sprite happySprite;
 
     private Camera camera;
     private int collected;
@@ -22,7 +23,6 @@ public class CollectFriends : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        
         collected = 0;
         friends = new List<GameObject>();
         friends.Add(friend1);
@@ -37,6 +37,7 @@ public class CollectFriends : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        friendPointer.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 2f, 0);
         friendPointer.transform.LookAt(friendLocation);
         var dir = new Vector3(friendLocation.x, friendLocation.y, 0f) - transform.position;
         var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
@@ -51,7 +52,7 @@ public class CollectFriends : MonoBehaviour
             
             if (canCollect)
             {
-                
+                StartCoroutine(smileForDuration(2f));
                 collected++;
                 Debug.Log("I have colledted " + collected + " friends");
                 canCollect = false;
@@ -94,6 +95,15 @@ public class CollectFriends : MonoBehaviour
         }
         Instantiate(friends[friendInt], location, Quaternion.Euler(Vector3.forward));
         friendLocation = location;
+    }
+
+    private IEnumerator smileForDuration (float seconds)
+    {
+
+        Sprite originalSprite = gameObject.GetComponent<SpriteRenderer>().sprite;
+        gameObject.GetComponent<SpriteRenderer>().sprite = happySprite;
+        yield return new WaitForSeconds(seconds);
+        gameObject.GetComponent<SpriteRenderer>().sprite = originalSprite;
     }
 
 }
