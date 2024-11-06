@@ -21,8 +21,8 @@ public class Menu : MonoBehaviour
         // activate child with cutscene and scene loader
         cutscene.SetActive(true);
 
-        Invoke("StartCutscene", 1);
-        Invoke("ShowSkip", 8);
+        Invoke("StartCutscene", 4);
+        Invoke("ShowSkip", 14);
     }
 
     private void ShowSkip()
